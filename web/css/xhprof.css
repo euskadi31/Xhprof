@@ -1,0 +1,48 @@
+body {
+    position: relative;
+    padding-top: 40px;
+}
+
+.xhprof-wrapper {
+    padding-top: 20px;
+}
+
+.report-info table {
+    margin-right: 20px;
+}
+
+.report-summary {
+    width: 250px;
+}
+
+.report-summary tr td.report-summary-label {
+    font-weight: bold;
+}
+
+.report-summary tr td.report-summary-value {
+    text-align: right;
+}
+
+.report-metrics .metric-name {
+    text-align: left;
+}
+
+.report-metrics .metric-ct {
+    text-align: right;
+}
+
+.report-metrics .metric-ct-percent {
+    text-align: right;
+}
+
+.report-metrics .metric-wt {
+    text-align: right;
+}
+
+.report-metrics .metric-wt-percent {
+    text-align: right;
+}
+
+.report-metrics .metric-excl-wt {
+    text-align: right;
+}

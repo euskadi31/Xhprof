@@ -1,0 +1,79 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2">
+            <table class="report-summary table table-condensed table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Run Report</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="report-summary-label">Run:</td>
+                        <td class="report-summary-value">{{ run_id }}</td>
+                    </tr>
+                    <tr>
+                        <td class="report-summary-label">Namespace:</td>
+                        <td class="report-summary-value">{{ namespace }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <table class="report-summary table table-condensed table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Overall Summary</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, val in report.getOverall() %}
+                    <tr>
+                        <td class="report-summary-label">{{ key }}:</td>
+                        <td class="report-summary-value">{{ val }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="span10">
+            
+            <table class="report-metrics table table-condensed table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="metric-name"><a href="">Function Name</a></th>
+                        <th class="metric-ct"><a href="">Calls</a></th>
+                        <th class="metric-ct-percent">Calls (%)</th>
+                        <th class="metric-wt"><a href="">Incl. Wall Time (ms)</a></th>
+                        <th class="metric-wt-percent">IWall (%)</th>
+                        <th class="metric-excl-wt"><a href="">Excl. Wall Time (ms)</a></th>
+                        <th>EWall (%)</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for metric in report.getMetrics() %}
+                    <tr>
+                        <td class="metric-name">{{ metric.fn }}</td>
+                        <td class="metric-ct">{{ metric.ct }}</td>
+                        <td class="metric-ct-percent">{{ metric.ct_pct|number_format(2) }}%</td>
+                        <td class="metric-wt">{{ metric.wt }}</td>
+                        <td class="metric-wt-percent">{{ metric.wt_pct|number_format(2) }}%</td>
+                        <td class="metric-excl-wt">{{ metric.excl_wt }}</td>
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+            
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,5 @@
+.DS_Store
+examples/runs/*
+vendor
+composer.phar
+composer.lock
