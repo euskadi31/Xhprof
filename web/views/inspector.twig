@@ -1,0 +1,54 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+
+<table class="table table-condensed table-bordered table-hover">
+    <thead>
+        <tr align="right">
+            <th align="left"><a href="/?run=5043eb9ae4698&amp;symbol=main%28%29&amp;source=xhprof_foo&amp;all=1&amp;sort=fn">Function Name</a></th>
+            <th class="vwbar"><a href="/?run=5043eb9ae4698&amp;symbol=main%28%29&amp;source=xhprof_foo&amp;all=1&amp;sort=ct">Calls</a></th>
+            <th class="vwbar">Calls (%)</th>
+            <th class="vwbar"><a href="/?run=5043eb9ae4698&amp;symbol=main%28%29&amp;source=xhprof_foo&amp;all=1&amp;sort=wt">Incl. Wall Time (ms)</a></th>
+            <th class="vwbar">IWall (%)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="background-color: whiteSmoke;"><b><i><center>Current Function</center></i></b></td>
+        </tr>
+        <tr>
+            <td><a href="">main()</a></td>
+            <td class="vbar">1</td>
+            <td class="vbar">33.3%</td>
+            <td class="vbbar">268</td>
+            <td class="vbbar">100.0%</td>
+        </tr>
+        <tr>
+            <td style="text-align:right;color:blue">Exclusive Metrics  for Current Function</td>
+            <td class="vbar"></td>
+            <td class="vbar"></td>
+            <td type="Child" metric="wt" class="vbbar">16</td>
+            <td type="Child" metric="wt" class="vbbar">6.0%</td>
+        </tr>
+        <tr>
+            <td style="background-color: whiteSmoke;"><b><i><center>Child functions</center></i></b></td>
+        </tr>
+        <tr>
+            <td><a href="/?run=5043eb9ae4698&amp;symbol=foo&amp;source=xhprof_foo&amp;all=1">foo</a></td>
+            <td type="Child" metric="ct" class="vbar">1</td>
+            <td type="Child" metric="ct" class="vbar">50.0%</td>
+            <td type="Child" metric="wt" class="vbbar">251</td>
+            <td type="Child" metric="wt" class="vbbar">93.7%</td>
+        </tr>
+        <tr>
+            <td><a href="/?run=5043eb9ae4698&amp;symbol=xhprof_disable&amp;source=xhprof_foo&amp;all=1">xhprof_disable</a></td>
+            <td type="Child" metric="ct" class="vbar">1</td>
+            <td type="Child" metric="ct" class="vbar">50.0%</td>
+            <td type="Child" metric="wt" class="vbbar">1</td>
+            <td type="Child" metric="wt" class="vbbar">0.4%</td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock %}

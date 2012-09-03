@@ -33,7 +33,11 @@
                 <tbody>
                     {% for key, val in report.getOverall() %}
                     <tr>
-                        <td class="report-summary-label">{{ key }}:</td>
+                        {% if key == 'ct' %}
+                        <td class="report-summary-label">Number of Function Calls:</td>
+                        {% else %}
+                        <td class="report-summary-label">Total {{ report.getLegend(key) }}:</td>
+                        {% endif %}
                         <td class="report-summary-value">{{ val }}</td>
                     </tr>
                     {% endfor %}
@@ -45,26 +49,26 @@
             <table class="report-metrics table table-condensed table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th class="metric-name"><a href="">Function Name</a></th>
-                        <th class="metric-ct"><a href="">Calls</a></th>
-                        <th class="metric-ct-percent">Calls (%)</th>
-                        <th class="metric-wt"><a href="">Incl. Wall Time (ms)</a></th>
-                        <th class="metric-wt-percent">IWall (%)</th>
-                        <th class="metric-excl-wt"><a href="">Excl. Wall Time (ms)</a></th>
-                        <th>EWall (%)</th>
+                        <th class="metric-fn"><a href="?sort=fn">Function Name</a></th>
+                        <th class="metric-ct"><a href="?sort=ct">Calls</a></th>
+                        <th class="metric-ct_pct">Calls (%)</th>
+                        <th class="metric-wt"><a href="?sort=wt">Incl. Wall Time (ms)</a></th>
+                        <th class="metric-wt_pct">IWall (%)</th>
+                        <th class="metric-excl_wt"><a href="?sort=excl_wt">Excl. Wall Time (ms)</a></th>
+                        <th class="metric-ewall_pct">EWall (%)</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     {% for metric in report.getMetrics() %}
                     <tr>
-                        <td class="metric-name">{{ metric.fn }}</td>
+                        <td class="metric-fn"><a href="?symbol={{ metric.fn }}">{{ metric.fn }}</a></td>
                         <td class="metric-ct">{{ metric.ct }}</td>
-                        <td class="metric-ct-percent">{{ metric.ct_pct|number_format(2) }}%</td>
+                        <td class="metric-ct_pct">{{ metric.ct_pct|number_format(1) }}%</td>
                         <td class="metric-wt">{{ metric.wt }}</td>
-                        <td class="metric-wt-percent">{{ metric.wt_pct|number_format(2) }}%</td>
-                        <td class="metric-excl-wt">{{ metric.excl_wt }}</td>
-                        <td></td>
+                        <td class="metric-wt_pct">{{ metric.wt_pct|number_format(1) }}%</td>
+                        <td class="metric-excl_wt">{{ metric.excl_wt }}</td>
+                        <td class="metric-ewall_pct">{{ metric.ewall_pct|number_format(1) }}%</td>
                     </tr>
                     {% endfor %}
                 </tbody>

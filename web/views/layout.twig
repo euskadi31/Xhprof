@@ -5,6 +5,7 @@
         <title>XHProf: Hierarchical Profiler Report</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
         <link href="/css/xhprof.css" rel="stylesheet" />
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -17,12 +18,12 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container" style="width: auto; padding: 0 20px;">
-                    <a class="brand" href="#">XHProf</a>
-                    <ul class="nav">
+                    <a class="brand" href="#">XHProf GUI</a>
+                    <!-- <ul class="nav">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#">Link</a></li>
                         <li><a href="#">Link</a></li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>
@@ -31,6 +32,10 @@
             {% block content %}{% endblock %}
         </div>
         
+        <footer class="footer">
+            XHProf GUI has been created by <a href="http://twitter.com/euskadi31">Axel Etcheverry</a><br />
+            This application is powered by Silex and Twig.
+        </footer>
         
     </body>
 </html>

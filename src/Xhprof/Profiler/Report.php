@@ -63,6 +63,46 @@ class Report
      * @var Array
      */
     protected $data = array(
+        'legends' => array(
+            "fn"            => "Function Name",
+            "ct"            => "Calls",
+            "ct_pct"        => "Calls (%)",
+
+            "wt"            => "Incl. Wall Time (ms)",
+            "iwall_pct"     => "IWall (%)",
+            "excl_wt"       => "Excl. Wall Time (ms)",
+            "ewall_pct"     => "EWall (%)",
+
+            "ut"            => "Incl. User (ms)",
+            "iuser_pct"     => "IUser (%)",
+            "excl_ut"       => "Excl. User (ms)",
+            "euser_pct"     => "EUser (%)",
+
+            "st"            => "Incl. Sys (ms)",
+            "isys_pct"      => "ISys (%)",
+            "excl_st"       => "Excl. Sys (ms)",
+            "esys_pct"      => "ESys (%)",
+
+            "cpu"           => "Incl. CPU (ms)",
+            "icpu_pct"      => "ICpu (%)",
+            "excl_cpu"      => "Excl. CPU (ms)",
+            "ecpu_pct"      => "ECPU (%)",
+
+            "mu"            => "Incl. MemUse (bytes)",
+            "imuse_pct"     => "IMemUse (%)",
+            "excl_mu"       => "Excl. MemUse (bytes)",
+            "emuse_pct"     => "EMemUse (%)",
+
+            "pmu"           => "Incl. PeakMemUse (bytes)",
+            "ipmuse_pct"    => "IPeakMemUse (%)",
+            "excl_pmu"      => "Excl. PeakMemUse (bytes)",
+            "epmuse_pct"    => "EPeakMemUse (%)",
+
+            "samples"       => "Incl. Samples",
+            "isamples_pct"  => "ISamples (%)",
+            "excl_samples"  => "Excl. Samples",
+            "esamples_pct"  => "ESamples (%)"
+        ),
         'overall' => array(),
         'metrics' => array()
     );
@@ -115,17 +155,18 @@ class Report
         }
         
         foreach($this->data['metrics'] as $symbol => $info) {
-            foreach(array('wt', 'ct') as $metric) {
-                
-                if($this->data['overall'][$metric] == 0) {
-                    $this->data['metrics'][$symbol][$metric . '_pct'] = 'N/A';
-                } else {
-                    $this->data['metrics'][$symbol][$metric . '_pct'] = (
-                        ($this->data['metrics'][$symbol][$metric] / abs($this->data['overall'][$metric])) * 100
-                    );
-                }
-                
-            }
+            
+            $this->data['metrics'][$symbol]['wt_pct'] = (
+                ($this->data['metrics'][$symbol]['wt'] / abs($this->data['overall']['wt'])) * 100
+            );
+            
+            $this->data['metrics'][$symbol]['ct_pct'] = (
+                ($this->data['metrics'][$symbol]['ct'] / abs($this->data['overall']['ct'])) * 100
+            );
+            
+            $this->data['metrics'][$symbol]['ewall_pct'] = (
+                ($this->data['metrics'][$symbol]['excl_wt'] / abs($this->data['overall']['wt'])) * 100
+            );
         }
         
         //print_r($this->data);
@@ -161,6 +202,15 @@ class Report
                 'wt_percent'    => (($metric['wt'] / $this->total) * 100)
             );
         }*/
+    }
+    
+    public function getLegend($symbol)
+    {
+        if(isset($this->data['legends'][$symbol])) {
+            return $this->data['legends'][$symbol];
+        }
+        
+        throw new \InvalidArgumentException(sprintf('Symbol %s does not exist.', $symbol));
     }
     
     protected function _getMetrics($data)

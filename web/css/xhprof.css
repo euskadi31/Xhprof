@@ -12,7 +12,7 @@ body {
 }
 
 .report-summary {
-    width: 250px;
+    /*width: 250px;*/
 }
 
 .report-summary tr td.report-summary-label {
@@ -23,26 +23,11 @@ body {
     text-align: right;
 }
 
-.report-metrics .metric-name {
+.report-metrics tr td,
+.report-metrics tr th {
+    text-align: right;
+}
+
+.report-metrics .metric-fn {
     text-align: left;
-}
-
-.report-metrics .metric-ct {
-    text-align: right;
-}
-
-.report-metrics .metric-ct-percent {
-    text-align: right;
-}
-
-.report-metrics .metric-wt {
-    text-align: right;
-}
-
-.report-metrics .metric-wt-percent {
-    text-align: right;
-}
-
-.report-metrics .metric-excl-wt {
-    text-align: right;
 }
