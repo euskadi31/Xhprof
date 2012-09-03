@@ -1,16 +1,18 @@
 <?php
 
+namespace Demo;
+
 function bar($x) {
-  if ($x > 0) {
-    bar($x - 1);
-  }
+    if ($x > 0) {
+        bar($x - 1);
+    }
 }
 
 function foo() {
-  for ($idx = 0; $idx < 5; $idx++) {
-    bar($idx);
-    $x = strlen("abc");
-  }
+    for ($idx = 0; $idx < 5; $idx++) {
+        bar($idx);
+        $x = strlen("abc");
+    }
 }
 
 
@@ -25,7 +27,7 @@ $xhprof_data = xhprof_disable();
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$xhprof = new Xhprof\Profiler(include __DIR__ . '/config.php');
+$xhprof = new \Xhprof\Profiler(include __DIR__ . '/config.php');
 
 $run_id = $xhprof->save($xhprof_data);
 

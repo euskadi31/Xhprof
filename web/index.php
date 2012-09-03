@@ -2,6 +2,11 @@
 
 namespace Application;
 
+if(!file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    echo "Please execute make && make install";
+    exit;
+}
+
 use Silex;
 use Xhprof;
 
